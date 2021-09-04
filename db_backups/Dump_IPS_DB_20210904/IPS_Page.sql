@@ -16,30 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Todo`
+-- Table structure for table `Page`
 --
 
-DROP TABLE IF EXISTS `Todo`;
+DROP TABLE IF EXISTS `Page`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Todo` (
+CREATE TABLE `Page` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `action_item` varchar(2000) NOT NULL,
-  `completed` tinyint DEFAULT NULL,
-  `due_date` date DEFAULT NULL,
-  `person_id` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(45) NOT NULL,
+  `effective_date` date NOT NULL,
+  `expiration_date` date NOT NULL,
+  `permission_id` int NOT NULL COMMENT '	',
+  `permission_group_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_Page_Permission1_idx` (`permission_id`),
+  CONSTRAINT `fk_Page_Permission1` FOREIGN KEY (`permission_id`) REFERENCES `Permission` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Todo`
+-- Dumping data for table `Page`
 --
 
-LOCK TABLES `Todo` WRITE;
-/*!40000 ALTER TABLE `Todo` DISABLE KEYS */;
-INSERT INTO `Todo` VALUES (1,'Buy charcoal for the grill',0,NULL,2),(2,'Listen to Vue Mastery video',0,NULL,2),(3,'Study for Java Certification exam',0,NULL,2);
-/*!40000 ALTER TABLE `Todo` ENABLE KEYS */;
+LOCK TABLES `Page` WRITE;
+/*!40000 ALTER TABLE `Page` DISABLE KEYS */;
+INSERT INTO `Page` VALUES (1,'Login Page','2021-09-04','2027-09-04',1,1),(2,'Login Page','2021-09-04','2027-09-04',2,1),(3,'Login Page','2021-09-04','2027-09-04',1,2),(4,'Login Page','2021-09-04','2027-09-04',2,2),(5,'Login Page','2021-09-04','2027-09-04',1,3),(6,'Login Page','2021-09-04','2027-09-04',2,3),(7,'Login Page','2021-09-04','2027-09-04',1,4),(8,'Login Page','2021-09-04','2027-09-04',2,4),(9,'Login Page','2021-09-04','2027-09-04',1,5),(10,'Login Page','2021-09-04','2027-09-04',2,5);
+/*!40000 ALTER TABLE `Page` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-01 13:23:58
+-- Dump completed on 2021-09-04 12:08:02

@@ -16,32 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Page`
+-- Table structure for table `Permission_Group`
 --
 
-DROP TABLE IF EXISTS `Page`;
+DROP TABLE IF EXISTS `Permission_Group`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Page` (
+CREATE TABLE `Permission_Group` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `effective_date` date NOT NULL,
   `expiration_date` date NOT NULL,
-  `permission_id` int NOT NULL COMMENT '	',
-  `permission_group_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_Page_Permission1_idx` (`permission_id`),
-  CONSTRAINT `fk_Page_Permission1` FOREIGN KEY (`permission_id`) REFERENCES `Permission` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Page`
+-- Dumping data for table `Permission_Group`
 --
 
-LOCK TABLES `Page` WRITE;
-/*!40000 ALTER TABLE `Page` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Page` ENABLE KEYS */;
+LOCK TABLES `Permission_Group` WRITE;
+/*!40000 ALTER TABLE `Permission_Group` DISABLE KEYS */;
+INSERT INTO `Permission_Group` VALUES (1,'Admin','2021-09-04','2027-09-04'),(2,'Supervisor','2021-09-04','2022-09-04'),(3,'Aalyst','2021-09-04','2022-09-04'),(4,'Clerk','2021-09-04','2022-09-04'),(5,'QA Analyst','2021-09-04','2022-09-04');
+/*!40000 ALTER TABLE `Permission_Group` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-01 13:23:58
+-- Dump completed on 2021-09-04 12:08:02

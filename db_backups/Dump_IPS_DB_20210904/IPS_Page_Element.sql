@@ -16,33 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Person`
+-- Table structure for table `Page_Element`
 --
 
-DROP TABLE IF EXISTS `Person`;
+DROP TABLE IF EXISTS `Page_Element`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Person` (
+CREATE TABLE `Page_Element` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `editable` tinyint NOT NULL,
+  `visible` tinyint DEFAULT NULL,
+  `enabled` tinyint NOT NULL,
   `effective_date` date NOT NULL,
   `expiration_date` date NOT NULL,
-  `gender` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Page_id` int NOT NULL,
+  PRIMARY KEY (`id`,`Page_id`),
+  KEY `fk_Page_Element_Page1_idx` (`Page_id`),
+  CONSTRAINT `fk_Page_Element_Page1` FOREIGN KEY (`Page_id`) REFERENCES `Page` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Person`
+-- Dumping data for table `Page_Element`
 --
 
-LOCK TABLES `Person` WRITE;
-/*!40000 ALTER TABLE `Person` DISABLE KEYS */;
-INSERT INTO `Person` VALUES (1,'credmond@excite.com','chicago','Carolyn','Redmond','2021-07-03','2022-07-03',NULL),(2,'dthompson98@gmail.com','password','Darryl','Thompson','2021-07-04','2022-07-04',NULL),(3,'donny.mitchell@gmail.com','password','Donnie','Mitchell','2021-07-04','2021-12-04',NULL),(4,'carla.amado@gmail.com','losAngeles89','Carla','Amado','2019-11-09','2023-10-01','F');
-/*!40000 ALTER TABLE `Person` ENABLE KEYS */;
+LOCK TABLES `Page_Element` WRITE;
+/*!40000 ALTER TABLE `Page_Element` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Page_Element` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-01 13:23:59
+-- Dump completed on 2021-09-04 12:08:02

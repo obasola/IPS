@@ -16,35 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Page_Element`
+-- Table structure for table `Permission`
 --
 
-DROP TABLE IF EXISTS `Page_Element`;
+DROP TABLE IF EXISTS `Permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Page_Element` (
+CREATE TABLE `Permission` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `type` varchar(45) NOT NULL,
-  `editable` tinyint NOT NULL,
-  `visible` tinyint DEFAULT NULL,
-  `enabled` tinyint NOT NULL,
+  `action` varchar(25) NOT NULL,
   `effective_date` date NOT NULL,
   `expiration_date` date NOT NULL,
-  `Page_id` int NOT NULL,
-  PRIMARY KEY (`id`,`Page_id`),
-  KEY `fk_Page_Element_Page1_idx` (`Page_id`),
-  CONSTRAINT `fk_Page_Element_Page1` FOREIGN KEY (`Page_id`) REFERENCES `Page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Page_Element`
+-- Dumping data for table `Permission`
 --
 
-LOCK TABLES `Page_Element` WRITE;
-/*!40000 ALTER TABLE `Page_Element` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Page_Element` ENABLE KEYS */;
+LOCK TABLES `Permission` WRITE;
+/*!40000 ALTER TABLE `Permission` DISABLE KEYS */;
+INSERT INTO `Permission` VALUES (1,'Create','2021-09-04','2027-09-04'),(2,'Read','2021-09-04','2027-09-04'),(3,'Update','2021-09-04','2027-09-04'),(4,'Delete','2021-09-04','2027-09-04');
+/*!40000 ALTER TABLE `Permission` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-01 13:23:58
+-- Dump completed on 2021-09-04 12:08:02
